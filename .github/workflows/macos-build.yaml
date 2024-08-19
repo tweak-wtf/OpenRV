@@ -12,42 +12,42 @@
         - name: checkout
           uses: actions/checkout@v4
 
-        # - name: Set Xcode version
-        #   run: sudo xcode-select -s '/Applications/Xcode_14.3.app/Contents/Developer'
-        # - name: Check Xcode version
-        #   run: xcodebuild -version
+        - name: Set Xcode version
+          run: sudo xcode-select -s '/Applications/Xcode_14.3.app/Contents/Developer'
+        - name: Check Xcode version
+          run: xcodebuild -version
 
-        # - name: ensure brew
-        #   run: |
-        #     which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        #     brew update
-        # - name: install brew dependencies
-        #   run: |
-        #     brew install cmake ninja readline sqlite3 xz zlib tcl-tk autoconf automake libtool python yasm clang-format black meson nasm pkg-config glew
-
-        # - name: ensure qt
-        #   run: |
-        #     pip install aqtinstall
-        #     aqt list-qt mac desktop
-        #     python -m aqt install 5.15.2 mac desktop
-        #     echo "QT_HOME=/Users/runner/work/OpenRV/OpenRV/5.15.2/clang_64" >> $GITHUB_ENV
-
-        # - name: pip dependencies
-        #   run: |
-        #     pip install -r requirements.txt
-
-        - name: source rvcmds
+        - name: ensure brew
           run: |
-            ls -la .
-            chmod +x ./rvcmds.sh
-            source ./rvcmds.sh
-        - name: source bashrc
+            which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            brew update
+        - name: install brew dependencies
           run: |
-            ls -la $HOME
-            cat $HOME/.bashrc
-        - name: setup rv
+            brew install cmake ninja readline sqlite3 xz zlib tcl-tk autoconf automake libtool python yasm clang-format black meson nasm pkg-config glew
+
+        - name: ensure qt
+          run: |
+            pip install aqtinstall
+            aqt list-qt mac desktop
+            python -m aqt install 5.15.2 mac desktop
+            echo "QT_HOME=/Users/runner/work/OpenRV/OpenRV/5.15.2/clang_64" >> $GITHUB_ENV
+
+        - name: pip dependencies
+          run: |
+            pip install -r requirements.txt
+
+        # - name: source rvcmds
+        #   run: |
+        #     ls -la .
+        #     chmod +x ./rvcmds.sh
+        #     source ./rvcmds.sh
+        # - name: source bashrc
+        #   run: |
+        #     ls -la $HOME
+        #     cat $HOME/.bashrc
+        - name: bootstrap
           run: |
             source ./rvcmds.sh
             source $HOME/.bashrc
-            rvsetup
+            rvbootstrap
 
