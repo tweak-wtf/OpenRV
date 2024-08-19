@@ -28,7 +28,9 @@
 
         - name: ensure qt
           run: |
-            brew install qt@5.15
+            pip install aqtinstall
+            python -m aqt install 5.15 mac desktop -O /opt/ManualQT/5.15/
+            export QT_HOME=/opt/ManualQT/5.15/
 
         - name: source rvcmds
           run: |
