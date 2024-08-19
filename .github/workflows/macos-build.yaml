@@ -39,5 +39,6 @@
         - name: source rvcmds
           run: |
             source ./rvcmds.sh
+            source $HOME/.bashrc
             rvmk
 
