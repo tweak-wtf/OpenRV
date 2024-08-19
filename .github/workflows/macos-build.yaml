@@ -22,6 +22,13 @@
             which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
             brew update
             brew upgrade -q
+        - name: install brew dependencies
+          run: |
+            brew install cmake ninja readline sqlite3 xz zlib tcl-tk autoconf automake libtool python yasm clang-format black meson nasm pkg-config glew
+
+        - name: ensure qt
+          run: |
+            brew install qt@5.15
 
         - name: source rvcmds
           run: |
