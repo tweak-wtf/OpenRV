@@ -29,8 +29,7 @@
           run: |
             pip install aqtinstall
             aqt list-qt mac desktop
-            mkdir -p /usr/local/opt/qt
-            python -m aqt install 5.15.2 mac desktop -O /usr/local/opt/qt
+            python -m aqt install 5.15.2 mac desktop
             export QT_HOME=/opt/ManualQT/5.15/
 
         - name: source rvcmds
