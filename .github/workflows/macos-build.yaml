@@ -45,9 +45,9 @@
         #   run: |
         #     ls -la $HOME
         #     cat $HOME/.bashrc
-        - name: bootstrap
+        - name: setup
           run: |
             source ./rvcmds.sh
             source $HOME/.bashrc
-            rvbootstrap
+            rvsetup
 
