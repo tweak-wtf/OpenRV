@@ -123,4 +123,78 @@ rvsetup() {
   SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r ${RV_HOME}/requirements.txt
 }
 
+rvbuild() {
+  cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+}
+
+rvcfg() {
+  cmake -B ${RV_BUILD} -G "${CMAKE_GENERATOR}" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Release -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}
+}
+
+rvcfgd() {
+  cmake -B ${RV_BUILD} -G "${CMAKE_GENERATOR}" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Debug -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}
+}
+
+rvbuildt() {
+  cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+}
+
+rvbuildtd() {
+  cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+}
+
+rvbuildd() {
+  cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+}
+
+rvbuildd() {
+  cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+}
+
+rvtest() {
+  ctest --test-dir ${RV_BUILD} --extra=verbose
+}
+
+rvinst() {
+  cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Release
+}
+
+rvinstd() {
+  cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Debug
+}
+
+rvclean() {
+  rm -rf ${RV_BUILD}
+}
+
+rvmk() {
+  rvcfg && rvbuild
+}
+
+rvmkd() {
+  rvcfgd && rvbuildd
+}
+
+rvbootstrap() {
+  rvsetup && rvmk
+}
+
+rvbootstrapd() {
+  rvsetup && rvmkd
+}
+
 export -f rvsetup
+export -f rvcfg
+export -f rvcfgd
+export -f rvbuildt
+export -f rvbuildtd
+export -f rvbuild
+export -f rvbuildd
+export -f rvtest
+export -f rvinst
+export -f rvinstd
+export -f rvclean
+export -f rvmk
+export -f rvmkd
+export -f rvbootstrap
+export -f rvbootstrapd
