@@ -49,5 +49,5 @@
           run: |
             source ./rvcmds.sh
             source $HOME/.bashrc
-            rvsetup
+            rvmk
 
