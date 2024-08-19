@@ -33,6 +33,7 @@
             ls -la qt5
             cd qt5
             git checkout 5.15.2
+            ./init-repository
             ./configure -prefix $PWD/qtbase
             cmake --build .
             ls -la .
