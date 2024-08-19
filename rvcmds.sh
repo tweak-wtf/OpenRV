@@ -124,7 +124,7 @@ rvenv() {
 }
 
 rvsetup() {
-  rvenv && SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r ${RV_HOME}/requirements.txt
+  rvenv && SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r --break-system-packages ${RV_HOME}/requirements.txt
 }
 
 rvbuild() {
