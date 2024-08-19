@@ -33,6 +33,8 @@
             ls -la qt5
             cd qt5
             git checkout 5.15.2
+            ./configure -prefix $PWD/qtbase
+            cmake --build .
             ls -la .
             # curl -LO https://d13lb3tujbc8s0.cloudfront.net/onlineinstallers/qt-online-installer-macOS-x64-4.8.0.dmg
             # hdiutil attach qt-online-installer-macOS-x64-4.8.0.dmg
