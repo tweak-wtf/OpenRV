@@ -38,6 +38,7 @@
 
         - name: source rvcmds
           run: |
+            ls -la .
             chmod +x ./rvsetup.sh
             source ./rvcmds.sh
         - name: source bashrc
