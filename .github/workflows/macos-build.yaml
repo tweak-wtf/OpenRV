@@ -32,6 +32,13 @@
             python -m aqt install 5.15.2 mac desktop
             echo "QT_HOME=/Users/runner/work/OpenRV/OpenRV/5.15.2/clang_64" >> $GITHUB_ENV
 
+        - name: pip dependencies
+          run: |
+            pip install -r requirements.txt
+
         - name: source rvcmds
           run: |
             source ./rvcmds.sh
+            rvcfg
+            rvbuild
+
