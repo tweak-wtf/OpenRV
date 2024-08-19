@@ -47,6 +47,7 @@
             cat $HOME/.bashrc
         - name: setup rv
           run: |
+            source ./rvcmds.sh
             source $HOME/.bashrc
             rvsetup
 
