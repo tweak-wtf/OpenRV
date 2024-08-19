@@ -79,27 +79,27 @@ RV_BUILD_PARALLELISM="${RV_BUILD_PARALLELISM:-$(python3 -c 'import os; print(os.
 
 # ALIASES: Basic commands
 
-alias rvsetup="SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r ${RV_HOME}/requirements.txt"
-alias rvcfg="cmake -B ${RV_BUILD} -G \"${CMAKE_GENERATOR}\" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Release -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}"
-alias rvcfgd="cmake -B ${RV_BUILD} -G \"${CMAKE_GENERATOR}\" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Debug -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}"
-alias rvbuildt="cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target "
-alias rvbuildtd="cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target "
-alias rvbuild="rvbuildt main_executable"
-alias rvbuildd="rvbuildtd main_executable"
-alias rvtest="ctest --test-dir ${RV_BUILD} --extra=verbose"
-alias rvinst="cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Release"
-alias rvinstd="cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Debug"
-alias rvclean="rm -rf ${RV_BUILD}"
+echo 'alias rvsetup="SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r ${RV_HOME}/requirements.txt"' >> $HOME/.bashrc
+echo 'alias rvcfg="cmake -B ${RV_BUILD} -G \"${CMAKE_GENERATOR}\" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Release -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}"' >> $HOME/.bashrc
+echo 'alias rvcfgd="cmake -B ${RV_BUILD} -G \"${CMAKE_GENERATOR}\" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Debug -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}"' >> $HOME/.bashrc
+echo 'alias rvbuildt="cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target "' >> $HOME/.bashrc
+echo 'alias rvbuildtd="cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target "' >> $HOME/.bashrc
+echo 'alias rvbuild="rvbuildt main_executable"' >> $HOME/.bashrc
+echo 'alias rvbuildd="rvbuildtd main_executable"' >> $HOME/.bashrc
+echo 'alias rvtest="ctest --test-dir ${RV_BUILD} --extra=verbose"' >> $HOME/.bashrc
+echo 'alias rvinst="cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Release"' >> $HOME/.bashrc
+echo 'alias rvinstd="cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Debug"' >> $HOME/.bashrc
+echo 'alias rvclean="rm -rf ${RV_BUILD}"' >> $HOME/.bashrc
 
 # ALIASES: Config and Build
 
-alias rvmk="rvcfg && rvbuild"
-alias rvmkd="rvcfgd && rvbuildd"
+echo 'alias rvmk="rvcfg && rvbuild"' >> $HOME/.bashrc
+echo 'alias rvmkd="rvcfgd && rvbuildd"' >> $HOME/.bashrc'
 
 # ALIASES: Setup, Config and Build
 
-alias rvbootstrap="rvsetup && rvmk"
-alias rvbootstrapd="rvsetup && rvmkd"
+echo 'alias rvbootstrap="rvsetup && rvmk"' >> $HOME/.bashrc'
+echo 'alias rvbootstrapd="rvsetup && rvmkd"' >> $HOME/.bashrc'
 
 echo "Please ensure you have installed any required dependencies from doc/build_system/config_[os]"
 echo
