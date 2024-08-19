@@ -9,13 +9,20 @@
     build:
       runs-on: macos-latest
       steps:
-      - name: Set Xcode version
-        run: sudo xcode-select -s '/Applications/Xcode_14.3.app/Contents/Developer'
-      - name: Check Xcode version
-        run: xcodebuild -version
-      - name: checkout
-        uses: actions/checkout@v4
-  
-      - name: source rvcmds
-        run: |
-          source ./rvcmds.sh
+        - name: checkout
+          uses: actions/checkout@v4
+
+        - name: Set Xcode version
+          run: sudo xcode-select -s '/Applications/Xcode_14.3.app/Contents/Developer'
+        - name: Check Xcode version
+          run: xcodebuild -version
+
+        - name: ensure brew
+          run: |
+            which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            brew update
+            brew upgrade -y
+
+        - name: source rvcmds
+          run: |
+            source ./rvcmds.sh
