@@ -94,12 +94,12 @@ echo 'alias rvclean="rm -rf ${RV_BUILD}"' >> $HOME/.bashrc
 # ALIASES: Config and Build
 
 echo 'alias rvmk="rvcfg && rvbuild"' >> $HOME/.bashrc
-echo 'alias rvmkd="rvcfgd && rvbuildd"' >> $HOME/.bashrc'
+echo 'alias rvmkd="rvcfgd && rvbuildd"' >> $HOME/.bashrc
 
 # ALIASES: Setup, Config and Build
 
-echo 'alias rvbootstrap="rvsetup && rvmk"' >> $HOME/.bashrc'
-echo 'alias rvbootstrapd="rvsetup && rvmkd"' >> $HOME/.bashrc'
+echo 'alias rvbootstrap="rvsetup && rvmk"' >> $HOME/.bashrc
+echo 'alias rvbootstrapd="rvsetup && rvmkd"' >> $HOME/.bashrc
 
 echo "Please ensure you have installed any required dependencies from doc/build_system/config_[os]"
 echo
