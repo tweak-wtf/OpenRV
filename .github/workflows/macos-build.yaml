@@ -42,9 +42,9 @@
         - name: source bashrc
           run: |
             ls -la $HOME
-            source $HOME/.bashrc
             cat $HOME/.bashrc
         - name: setup rv
           run: |
+            source $HOME/.bashrc
             rvsetup
 
