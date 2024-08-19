@@ -119,53 +119,56 @@ echo
 echo "If this is your first time building RV try rvbootstrap (release) or rvbootstrapd (debug)"
 echo "To build quickly after bootstraping try rvmk (release) or rvmkd (debug)"
 
+rvenv() {
+  [ -d "_virtualenv" ] && source _virtualenv/bin/activate || (python3 -m venv _virtualenv && source _virtualenv/bin/activate)
+}
 
 rvsetup() {
-  SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r ${RV_HOME}/requirements.txt
+  rvenv && SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r ${RV_HOME}/requirements.txt
 }
 
 rvbuild() {
-  cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+  rvenv && cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target $1
 }
 
 rvcfg() {
-  cmake -B ${RV_BUILD} -G "${CMAKE_GENERATOR}" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Release -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}
+  rvenv && cmake -B ${RV_BUILD} -G "${CMAKE_GENERATOR}" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Release -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}
 }
 
 rvcfgd() {
-  cmake -B ${RV_BUILD} -G "${CMAKE_GENERATOR}" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Debug -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}
+  rvenv && cmake -B ${RV_BUILD} -G "${CMAKE_GENERATOR}" ${CMAKE_WIN_ARCH} -DCMAKE_BUILD_TYPE=Debug -DRV_DEPS_QT5_LOCATION=${QT_HOME} -DRV_DEPS_WIN_PERL_ROOT=${WIN_PERL}
 }
 
 rvbuildt() {
-  cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+  rvenv && cmake --build ${RV_BUILD} --config Release -v --parallel=${RV_BUILD_PARALLELISM} --target $1
 }
 
 rvbuildtd() {
-  cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+  rvenv && cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
 }
 
 rvbuildd() {
-  cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+  rvenv && cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
 }
 
 rvbuildd() {
-  cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
+  rvenv && cmake --build ${RV_BUILD} --config Debug -v --parallel=${RV_BUILD_PARALLELISM} --target $1
 }
 
 rvtest() {
-  ctest --test-dir ${RV_BUILD} --extra=verbose
+  rvenv && ctest --test-dir ${RV_BUILD} --extra=verbose
 }
 
 rvinst() {
-  cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Release
+  rvenv && cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Release
 }
 
 rvinstd() {
-  cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Debug
+  rvenv && cmake --install ${RV_BUILD} --prefix ${RV_INST} --config Debug
 }
 
 rvclean() {
-  rm -rf ${RV_BUILD}
+  rvenv && rm -rf ${RV_BUILD}
 }
 
 rvmk() {
@@ -184,6 +187,7 @@ rvbootstrapd() {
   rvsetup && rvmkd
 }
 
+export -f rvenv
 export -f rvsetup
 export -f rvcfg
 export -f rvcfgd
