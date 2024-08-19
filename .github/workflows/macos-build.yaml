@@ -39,6 +39,5 @@
         - name: source rvcmds
           run: |
             source ./rvcmds.sh
-            rvcfg
-            rvbuild
+            rvmk
 
