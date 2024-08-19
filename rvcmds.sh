@@ -117,3 +117,10 @@ echo "To override any of them do unset [name]; export [name]=value; source $SCRI
 echo
 echo "If this is your first time building RV try rvbootstrap (release) or rvbootstrapd (debug)"
 echo "To build quickly after bootstraping try rvmk (release) or rvmkd (debug)"
+
+
+rvsetup() {
+  SETUPTOOLS_USE_DISTUTILS=${SETUPTOOLS_USE_DISTUTILS} python3 -m pip install --user --upgrade -r ${RV_HOME}/requirements.txt
+}
+
+export -f rvsetup
