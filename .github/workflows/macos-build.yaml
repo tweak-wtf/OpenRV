@@ -1,0 +1,17 @@
+---
+  name: build OpenRV for MacOS
+  
+  on:
+    push:
+      branches: ["ci/build-macos"]
+  
+  jobs:
+    build:
+      runs-on: macos-latest
+      steps:
+      - name: checkout
+        uses: actions/checkout@v4
+  
+      - name: source rvcmds
+        run: |
+          source ./rvcmds.sh
