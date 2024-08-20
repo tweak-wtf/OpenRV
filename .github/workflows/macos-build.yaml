@@ -29,7 +29,6 @@
           run: |
             # pip install PySide2
             # mkdir -p ../qt
-            cd ../
             # git clone https://code.qt.io/qt/qt5.git
             # ls -la qt5
             # cd qt5
@@ -42,6 +41,7 @@
             # hdiutil attach qt-online-installer-macOS-x64-4.8.0.dmg
             # cp -R /Volumes/qt-unified-mac-x64-4.8.0/Qt\ Installer.app/Contents/MacOS/Qt\ Installer .
             
+            # cd ../
             pip install aqtinstall
             aqt list-qt mac desktop
             python -m aqt install 5.15.2 mac desktop -O ../qt
