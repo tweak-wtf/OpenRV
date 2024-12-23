@@ -4,7 +4,8 @@ on:
   push:
     branches:
       # This will run when PR is merged or direct pushes to main.
-      - main
+      - ci/build-macos
+      # - main
 
   pull_request: # This handles PR creation and subsequent commits.
 
@@ -229,12 +230,12 @@ jobs:
             qt-version: "5.15.2"
             python-version: "3.10"
             vfx-platform: "CY2023"
-          - os: "macos-13"
-            arch-type: "x86_64"
-            build-type: "Debug"
-            qt-version: "5.15.2"
-            python-version: "3.10"
-            vfx-platform: "CY2023"
+          # - os: "macos-13"
+          #   arch-type: "x86_64"
+          #   build-type: "Debug"
+          #   qt-version: "5.15.2"
+          #   python-version: "3.10"
+          #   vfx-platform: "CY2023"
     steps:
       - name: Check if it is a schedule job
         if: github.event_name == 'schedule'
