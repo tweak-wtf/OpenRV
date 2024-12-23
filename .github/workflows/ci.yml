@@ -9,9 +9,9 @@ on:
 
   pull_request: # This handles PR creation and subsequent commits.
 
-  schedule:
-    # Midnight build every day
-    - cron: "0 0 * * *"
+  # schedule:
+  #   # Midnight build every day
+  #   - cron: "0 0 * * *"
 
   # This allows manual triggering of the workflow from the web
   workflow_dispatch:
@@ -357,6 +357,12 @@ jobs:
       - name: Build OpenRV main executable
         run: |
           cmake --build _build --config ${{ matrix.build-type }} --target main_executable --parallel=$(python -c 'import os; print(os.cpu_count())') -v
+          
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: _build/stage/app
 
       - name: Tests
         run: |
@@ -365,6 +371,12 @@ jobs:
       - name: Install OpenRV
         run: |
           cmake --install _build --prefix $(pwd)/_install --config ${{ matrix.build-type }}
+
+      - name: Upload install artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: install-artifacts
+          path: _install/
 
   windows:
     if : ${{ github.repository_owner == 'AcademySoftwareFoundation' }}
