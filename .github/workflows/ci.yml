@@ -225,7 +225,7 @@ jobs:
       matrix:
         include:
           - os: "macos-13-xlarge"
-            arch-type: "x86_64"
+            arch-type: "arm64"
             build-type: "Release"
             qt-version: "5.15.2"
             python-version: "3.10"
