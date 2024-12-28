@@ -224,7 +224,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: "macos-12-large"
+          - os: "macos-13-xlarge"
             arch-type: "arm64"
             build-type: "Release"
             qt-version: "5.15.2"
