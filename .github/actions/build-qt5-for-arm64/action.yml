@@ -142,7 +142,7 @@ runs:
           -skip qtpurchasing \
           -skip qtlocation \
           -I /opt/homebrew/Cellar/openssl@1.1/1.1.1w/include -L /opt/homebrew/Cellar/openssl@1.1/1.1.1w/lib \
-          -I /opt/homebrew/Cellar/icu4c/74.2/include -L /opt/homebrew/Cellar/icu4c/74.2/lib
+          -I /opt/homebrew/Cellar/icu4c@74/74.2/include -L /opt/homebrew/Cellar/icu4c@74/74.2/lib
         working-directory: ${{ github.workspace }}/qt-build
         shell: bash
 
