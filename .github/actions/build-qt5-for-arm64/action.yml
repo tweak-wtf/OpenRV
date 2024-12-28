@@ -48,9 +48,9 @@ runs:
           brew install --quiet --formula libiconv libpng libpq libtool libuv libxau libxcb libxdmcp
           brew install --quiet --formula autoconf automake cmake pcre2 harfbuzz freetype node@18 nspr nss
           brew install --quiet --formula xcb-proto xcb-util xcb-util-cursor xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm
-          brew install --quiet --formula brotli bzip2 dbus glew icu4c jpeg md4c openssl@1.1 pkg-config sqlite xorgproto zlib zstd
+          brew install --quiet --formula brotli bzip2 dbus glew icu4c@74 jpeg md4c openssl@1.1 pkg-config sqlite xorgproto zlib zstd
           brew list openssl@1.1
-          brew list icu4c
+          brew list icu4c@74
         shell: bash
 
       # Use Ninja 1.11.1 because Qt need to be patched for Ninja 1.12.1.
