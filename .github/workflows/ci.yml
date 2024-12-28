@@ -272,25 +272,14 @@ jobs:
         run: |
           mkdir -p "${{ github.workspace }}/deps"
 
-      - name: Install Qt ${{ matrix.qt-version }}
-        # if: matrix.arch-type == 'x86_64'
-        uses: jurplel/install-qt-action@v4
+      - name: Build Qt for Apple ARM64
+        uses: ./.github/actions/build-qt5-for-arm64
         with:
-          version: '${{ matrix.qt-version }}'
-          host: 'mac'
-          target: 'desktop'
-          arch: 'clang_64'
-          dir: "${{ github.workspace }}/deps"
-          install-deps: 'false'
-          modules: 'debug_info qtcharts qtdatavis3d qtlottie qtnetworkauth qtquick3d qtquicktimeline qtscript qtwebengine qtwebglplugin'
-          archives: 'd3dcompiler_47 opengl32sw qt3d qtactiveqt qtbase qtconnectivity qtdeclarative qtgraphicaleffects qtimageformats qtlocation qtmultimedia qtquickcontrols qtquickcontrols2 qtremoteobjects qtscxml qtsensors qtsvg qttools qttranslations qtwebchannel qtwebsockets qtwebview qtwinextras qtxmlpatterns'
-          # Caching only save 2 minutes. Keep the cache for longer operations.
-          cache: false
-          setup-python: 'false'
-          tools: 'tools_qtcreator'
-          set-env: 'true'
-          tools-only: 'false'
-          aqtversion: '==3.1.*'
+          qt-version: ${{ matrix.qt-version }}
+          python3-version: '3.9.1'
+          python2-version: '2.7.18'
+          xcode-version: '14.0'
+          qt-output: ${{ github.workspace }}/deps/Qt/${{ matrix.qt-version }}
 
       - name: Patch Qt ${{ matrix.qt-version }}
         # if: matrix.arch-type == 'x86_64'
