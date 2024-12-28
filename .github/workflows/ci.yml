@@ -278,7 +278,7 @@ jobs:
           qt-version: ${{ matrix.qt-version }}
           python3-version: '3.9.1'
           python2-version: '2.7.18'
-          xcode-version: '14.1'
+          xcode-version: '14.3.1'
           qt-output: ${{ github.workspace }}/deps/Qt/${{ matrix.qt-version }}
 
       - name: Patch Qt ${{ matrix.qt-version }}
