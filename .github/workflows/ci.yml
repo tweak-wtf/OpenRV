@@ -273,7 +273,7 @@ jobs:
           mkdir -p "${{ github.workspace }}/deps"
 
       - name: Install Qt ${{ matrix.qt-version }}
-        if: matrix.arch-type == 'x86_64'
+        # if: matrix.arch-type == 'x86_64'
         uses: jurplel/install-qt-action@v4
         with:
           version: '${{ matrix.qt-version }}'
@@ -293,7 +293,7 @@ jobs:
           aqtversion: '==3.1.*'
 
       - name: Patch Qt ${{ matrix.qt-version }}
-        if: matrix.arch-type == 'x86_64'
+        # if: matrix.arch-type == 'x86_64'
         # There is an issue with Clang15 and Qt < 5.15.15.
         run: |
           curl -o file.zip https://codereview.qt-project.org/changes/qt%2Fqtbase~503172/revisions/3/files/mkspecs%2Ffeatures%2Ftoolchain.prf/download
@@ -314,7 +314,7 @@ jobs:
           brew install --quiet --formula cmake ninja readline sqlite3 xz zlib tcl-tk autoconf automake libtool python yasm clang-format black meson nasm pkg-config glew icu4c
 
       - name: Set QT_HOME
-        if: matrix.arch-type == 'x86_64'
+        # if: matrix.arch-type == 'x86_64'
         run: |
           echo "QT_HOME=${{ github.workspace }}/deps/Qt/${{ matrix.qt-version }}/clang_64" >> $GITHUB_ENV
           
