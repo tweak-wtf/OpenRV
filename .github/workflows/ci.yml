@@ -1,16 +1,16 @@
 name: OpenRV
 
 on:
-  push:
-    branches:
-      # This will run when PR is merged or direct pushes to main.
-      - main
+  # push:
+  #   branches:
+  #     # This will run when PR is merged or direct pushes to main.
+  #     - main
 
-  pull_request: # This handles PR creation and subsequent commits.
+  # pull_request: # This handles PR creation and subsequent commits.
 
-  schedule:
-    # Midnight build every day
-    - cron: "0 0 * * *"
+  # schedule:
+  #   # Midnight build every day
+  #   - cron: "0 0 * * *"
 
   # This allows manual triggering of the workflow from the web
   workflow_dispatch:
