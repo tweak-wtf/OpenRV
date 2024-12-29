@@ -176,6 +176,7 @@ runs:
 
       - name: Zip Qt
         run: zip -r qt_build_output.zip ${{ inputs.qt-output }}
+        shell: bash
 
       - name: Upload Qt build artifact
         uses: actions/upload-artifact@v3
