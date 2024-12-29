@@ -163,19 +163,19 @@ runs:
       - name: Display release folder and architecture
         if: steps.arm64-qt.outputs.cache-hit != 'true'
         run: |
-          ls -al ${{ inputs.qt-output }}
-          file ${{ inputs.qt-output }}/bin/qmake
+          ls -al ./${{ inputs.qt-output }}
+          file ./${{ inputs.qt-output }}/bin/qmake
         shell: bash
 
       - name: Cache Qt ${{ inputs.qt-version }}
         uses: actions/cache@v4
         with:
-          path: ${{ inputs.qt-output }}
+          path: ./${{ inputs.qt-output }}
           key: arm64-qt-${{ inputs.qt-version }}
           restore-keys: arm64-qt-${{ inputs.qt-version }}
 
       - name: Zip Qt
-        run: zip -r qt_build_output.zip ${{ inputs.qt-output }}
+        run: zip -r qt_build_output.zip ./${{ inputs.qt-output }}
         shell: bash
 
       - name: Upload Qt build artifact
