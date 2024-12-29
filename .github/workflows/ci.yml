@@ -281,14 +281,6 @@ jobs:
           xcode-version: '14.3.1'
           qt-output: ${{ github.workspace }}/deps/Qt/${{ matrix.qt-version }}
 
-      - name: Patch Qt ${{ matrix.qt-version }}
-        # if: matrix.arch-type == 'x86_64'
-        # There is an issue with Clang15 and Qt < 5.15.15.
-        run: |
-          curl -o file.zip https://codereview.qt-project.org/changes/qt%2Fqtbase~503172/revisions/3/files/mkspecs%2Ffeatures%2Ftoolchain.prf/download
-          unzip file.zip
-          cp $(unzip -l file.zip | awk 'NR==4 {print $4}') ${{ github.workspace }}/deps/Qt/${{ matrix.qt-version }}/clang_64/mkspecs/features/toolchain.prf
-
       - name: Activate Python ${{ matrix.python-version }}
         uses: actions/setup-python@f677139bbe7f9c59b41e40162b753c062f5d49a3 # 5.2.0
         with:
@@ -310,7 +302,7 @@ jobs:
       - name: Set QT_HOME
         if: matrix.arch-type == 'arm64'
         run: |
-          echo "QT_HOME=${{ github.workspace }}/deps" >> $GITHUB_ENV
+          echo "QT_HOME=${{ github.workspace }}/deps/Qt/${{ matrix.qt-version }}" >> $GITHUB_ENV
 
       - name: Check if the dependencies changed
         if: matrix.build-type == 'Release'
